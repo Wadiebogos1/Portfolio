@@ -284,6 +284,14 @@
             <h3>Atelier_04</h3>
             <p>Storage</p>
         </div>
+        <div class="feat-card" onclick="openAtelier('Atelier 5', 'Focus: SQL & Data Management', '#', '#', 'https://github.com/Wadiebogos1/Portfolio.git')">
+            <h3>Atelier_05</h3>
+            <p>Storage</p>
+        </div>
+        <div class="feat-card" onclick="openAtelier('Atelier 6', 'Focus: SQL & Data Management', '#', '#', '#')">
+            <h3>Atelier_06</h3>
+            <p>Storage</p>
+        </div>
     </section>
 
     <div id="atelierModal" class="modal">
