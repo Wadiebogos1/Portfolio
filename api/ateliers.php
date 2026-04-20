@@ -17,15 +17,15 @@
             --font-code: 'Fira Code', 'Consolas', monospace;
         }
 
-        /* الوضع البيج الفخم */
+        /* تم تعديل الوضع هنا ليكون بنفسجياً فخماً بدلاً من البيج */
         body.beige-mode {
-            --bg-dark: #f8f1e5;
-            --deep-green: #d4a373;
-            --luxury-brown: #5d4037;
-            --accent-green: #88c0d0;
-            --text-light: #434c5e;
-            --glass-bg: rgba(0, 0, 0, 0.02);
-            --shadow: 0 15px 35px rgba(74, 63, 53, 0.1);
+            --bg-dark: #120a1a; 
+            --deep-green: #2d1b4d;
+            --primary-green: #9b59b6;
+            --luxury-brown: #d4a373; 
+            --accent-green: #9b59b6;
+            --text-light: #e0e0e0;
+            --shadow: 0 15px 35px rgba(155, 89, 182, 0.2);
         }
 
         body {
@@ -37,7 +37,7 @@
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- تأثير الأوراق المتطايرة (الرقائق الذهبية) --- */
+        /* --- تأثير الأوراق المتطايرة --- */
         .gold-leaf {
             position: fixed;
             background: linear-gradient(135deg, var(--luxury-brown), #ffe4b5);
@@ -137,13 +137,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #1b4d3e 0%, #0a1a14 70%);
+            /* التدرج اللوني يتغير بناءً على المتغيرات */
+            background: radial-gradient(circle at center, var(--deep-green) 0%, var(--bg-dark) 70%);
             padding: 0 20px;
-        }
-
-        /* Adjust hero gradient for beige mode */
-        body.beige-mode .hero {
-            background: radial-gradient(circle at center, #fdfaf5 0%, #f8f1e5 70%);
+            transition: background 0.5s ease;
         }
 
         .hero h1 { 
@@ -320,7 +317,6 @@
         }
         setInterval(createLeaf, 700);
 
-        // Updated toggleTheme to handle title change
         function toggleTheme() {
             const body = document.body;
             const heroTitle = document.getElementById('heroTitle');
@@ -328,7 +324,8 @@
             body.classList.toggle('beige-mode');
 
             if (body.classList.contains('beige-mode')) {
-                heroTitle.innerHTML = 'Vintage <span>Excellence</span>';
+                // العنوان يتغير في الوضع البنفسجي
+                heroTitle.innerHTML = 'Royal <span>Excellence</span>';
             } else {
                 heroTitle.innerHTML = 'Digital <span>Prestige</span>';
             }

@@ -17,14 +17,26 @@
             --font-code: 'Fira Code', monospace;
         }
 
+        /* الوضع البنفسجي الفخم */
+        body.purple-mode {
+            --bg-dark: #120a1a; 
+            --deep-green: #2d1b4d;
+            --accent-green: #9b59b6;
+            --luxury-brown: #d4a373; 
+            --form-bg: #1a0f26;
+            --text-light: #e0e0e0;
+        }
+
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             margin: 0;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background: radial-gradient(circle at top right, #1b4d3e, #0a1a14);
+            /* تم تعديل التدرج ليعتمد على المتغيرات */
+            background: radial-gradient(circle at top right, var(--deep-green), var(--bg-dark));
             min-height: 100vh;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* --- تأثير الرقائق المتطايرة --- */
@@ -53,12 +65,28 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(166, 124, 82, 0.2);
             background: rgba(10, 26, 20, 0.8);
+            position: sticky; top: 0; z-index: 1000;
         }
 
         .logo { font-family: var(--font-code); font-weight: bold; color: var(--luxury-brown); font-size: 1.4rem; }
 
+        nav { display: flex; align-items: center; }
         nav a { text-decoration: none; color: var(--text-light); margin-left: 20px; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--accent-green); }
+
+        /* زر تغيير الثيم */
+        .theme-toggle-btn {
+            background: var(--luxury-brown);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
 
         /* --- Contact Layout --- */
         .contact-section {
@@ -70,10 +98,10 @@
             gap: 50px;
         }
 
-        .contact-header { text-align: center; margin-bottom: 50px; }
+        .contact-header { text-align: center; margin-top: 50px; }
         .contact-header h1 { font-size: 3rem; margin: 0; color: var(--text-light); }
         .contact-header h1 span { color: var(--luxury-brown); }
-        .contact-header p { color: var(--accent-green); font-family: var(--font-code); font-size: 0.9rem; }
+        .contact-header p { color: var(--accent-green); font-family: var(--font-code); font-size: 0.9rem; transition: 0.3s; }
 
         /* --- Info Cards --- */
         .info-card {
@@ -101,6 +129,7 @@
             border-radius: 30px;
             border: 1px solid rgba(166, 124, 82, 0.3);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: background 0.5s ease;
         }
 
         .form-group { margin-bottom: 25px; }
@@ -151,10 +180,6 @@
             box-shadow: 0 15px 30px rgba(166, 124, 82, 0.3);
         }
 
-        .submit-btn:active {
-            transform: scale(0.95) skewX(-5deg);
-        }
-
         footer { text-align: center; padding: 50px; opacity: 0.4; font-family: var(--font-code); font-size: 0.8rem; }
 
         @media (max-width: 850px) {
@@ -171,11 +196,12 @@
         <nav>
             <a href="index.php">Accueil</a>
             <a href="#" style="color: var(--luxury-brown);">Contact</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">🌓 MODE</button>
         </nav>
     </header>
 
     <div class="contact-header">
-        <p>// system.connect()</p>
+        <p id="systemStatus">// system.connect()</p>
         <h1>Get In <span>Touch</span></h1>
     </div>
 
@@ -217,6 +243,19 @@
     </footer>
 
     <script>
+        // تغيير الثيم
+        function toggleTheme() {
+            const body = document.body;
+            const status = document.getElementById('systemStatus');
+            body.classList.toggle('purple-mode');
+
+            if (body.classList.contains('purple-mode')) {
+                status.innerText = '// system.secure_connection(purple)';
+            } else {
+                status.innerText = '// system.connect()';
+            }
+        }
+
         // توليد الرقائق المتطايرة
         const container = document.getElementById('particles');
         function createLeaf() {
