@@ -249,7 +249,7 @@
             <div class="dropdown">
                 <button class="dropdown-btn" onclick="toggleDropdown()">Repositories.exe ▼</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" onclick="openAtelier('Atelier 1', 'Analyse du système', '/At1.pdf', '/At1.pdf' '#')">> Atelier_01</a>
+                    <a href="#" onclick="openAtelier('Atelier 1', 'Analyse du système', '/At1.pdf', '/At1.pdf', '#')">> Atelier_01</a>
                     <a href="#" onclick="openAtelier('Atelier 2', 'Design Interfaces', '/At2.pdf', '#', '#')">> Atelier_02</a>
                     <a href="#" onclick="openAtelier('Atelier 3', 'Cyber Security', '/At3.pdf', '#', '#')">> Atelier_03</a>
                     <a href="#" onclick="openAtelier('Atelier 4', 'Storage Engine','/At4.pdf', '#', '#')">> Atelier_04</a>
@@ -268,7 +268,7 @@
     </section>
 
     <section class="features">
-        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '/At1.pdf', '#', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '/At1.pdf', '/At1.pdf', '#')">
             <h3>Atelier_01</h3>
             <p>Analysis</p>
         </div>
