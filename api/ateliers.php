@@ -268,7 +268,7 @@
     </section>
 
     <section class="features">
-        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '/At1.pdf', '/At1.pdf', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '/At1.pdf', '#', '#')">
             <h3>Atelier_01</h3>
             <p>Analysis</p>
         </div>
