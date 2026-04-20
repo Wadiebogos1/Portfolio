@@ -249,11 +249,11 @@
             <div class="dropdown">
                 <button class="dropdown-btn" onclick="toggleDropdown()">Repositories.exe ▼</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" onclick="openAtelier('Atelier 1', 'Analyse du système', '#', '#', '#')">> Atelier_01</a>
-                    <a href="#" onclick="openAtelier('Atelier 2', 'Design Interfaces', '#', '#', '#')">> Atelier_02</a>
-                    <a href="#" onclick="openAtelier('Atelier 3', 'Cyber Security', '#', '#', '#')">> Atelier_03</a>
-                    <a href="#" onclick="openAtelier('Atelier 4', 'Storage Engine', '#', '#', '#')">> Atelier_04</a>
-                    <a href="#" onclick="openAtelier('Atelier 5', 'Auth Sessions', '#', '#', '#')">> Atelier_05</a>
+                    <a href="#" onclick="openAtelier('Atelier 1', 'Analyse du système', '/At1.pdf', '/At1.pdf' '#')">> Atelier_01</a>
+                    <a href="#" onclick="openAtelier('Atelier 2', 'Design Interfaces', '/At2.pdf', '#', '#')">> Atelier_02</a>
+                    <a href="#" onclick="openAtelier('Atelier 3', 'Cyber Security', '/At3.pdf', '#', '#')">> Atelier_03</a>
+                    <a href="#" onclick="openAtelier('Atelier 4', 'Storage Engine','/At4.pdf', '#', '#')">> Atelier_04</a>
+                    <a href="#" onclick="openAtelier('Atelier 5', 'Auth Sessions','/At5.pdf', '#', '#')">> Atelier_05</a>
                 </div>
             </div>
             <a href="contact.php">Contact</a>
@@ -268,28 +268,24 @@
     </section>
 
     <section class="features">
-        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '#', '#', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 1', 'Focus: Analyse & Algorithmes', '/At1.pdf', '/At1.pdf', '#')">
             <h3>Atelier_01</h3>
             <p>Analysis</p>
         </div>
-        <div class="feat-card" onclick="openAtelier('Atelier 2', 'Focus: UI/UX & Design Systems', '#', '#', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 2', 'Focus: UI/UX & Design Systems', '/At2.pdf', '#', '#')">
             <h3>Atelier_02</h3>
             <p>Design</p>
         </div>
-        <div class="feat-card" onclick="openAtelier('Atelier 3', 'Focus: Security & Encryption', '#', '#', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 3', 'Focus: Security & Encryption', '/At3.pdf', '#', '#')">
             <h3>Atelier_03</h3>
             <p>Security</p>
         </div>
-        <div class="feat-card" onclick="openAtelier('Atelier 4', 'Focus: SQL & Data Management', '#', '#', '#')">
+        <div class="feat-card" onclick="openAtelier('Atelier 4', 'Focus: SQL & Data Management', '/At4.pdf', '#', '#')">
             <h3>Atelier_04</h3>
             <p>Storage</p>
         </div>
         <div class="feat-card" onclick="openAtelier('Atelier 5', 'Focus: SQL & Data Management', '/At5.pdf', '#', 'https://github.com/Wadiebogos1/Portfolio.git')">
             <h3>Atelier_05</h3>
-            <p>Storage</p>
-        </div>
-        <div class="feat-card" onclick="openAtelier('Atelier 6', 'Focus: SQL & Data Management', '#', '#', '#')">
-            <h3>Atelier_06</h3>
             <p>Storage</p>
         </div>
     </section>
