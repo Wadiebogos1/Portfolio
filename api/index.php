@@ -1,259 +1,1192 @@
+<?php
+// Set page encoding and title headers
+header('Content-Type: text/html; charset=utf-8');
+
+$studentName = "WADIE";
+$academicYear = "2025/2026";
+$specialization = "Développement Digital - Option Web / Full-Stack";
+
+// Definition of all official 2nd Year OFPPT Digital Development Modules
+$modules = [
+    [
+        'id' => 'M201',
+        'code' => 'M201',
+        'title' => "Préparation d'un projet web",
+        'category' => 'management',
+        'desc' => "Analyse des besoins, élaboration du cahier des charges, modélisation UML, wireframing et charte graphique.",
+        'techs' => ['UML', 'Figma', 'Agile', 'Cahier des charges'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M201+Wireframe+Spec'
+    ],
+    [
+        'id' => 'M202',
+        'code' => 'M202',
+        'title' => "Approche agile",
+        'category' => 'management',
+        'desc' => "Gestion de projet selon la méthodologie Scrum, planification des Sprints, backlog utilisateur et daily standups.",
+        'techs' => ['Scrum', 'Trello', 'Jira', 'Kanban'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M202+Scrum+Board'
+    ],
+    [
+        'id' => 'M203',
+        'code' => 'M203',
+        'title' => "Intégration web",
+        'category' => 'frontend',
+        'desc' => "Création d'interfaces web modernes, responsive design avec HTML5, CSS3, JavaScript ES6+ et frameworks CSS.",
+        'techs' => ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Tailwind'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M203+Integration+CSS'
+    ],
+    [
+        'id' => 'M204',
+        'code' => 'M204',
+        'title' => "Développement web dynamique",
+        'category' => 'backend',
+        'desc' => "Conception d'applications web serveur sécurisées avec PHP, Laravel, Node.js, Express, POO, architecture MVC et MySQL.",
+        'techs' => ['PHP', 'Laravel', 'Node.js', 'MySQL', 'PDO'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M204+Laravel+Backend'
+    ],
+    [
+        'id' => 'M205',
+        'code' => 'M205',
+        'title' => "Développement front-end",
+        'category' => 'frontend',
+        'desc' => "Création de Single Page Applications (SPA) dynamiques avec React.js / Vue.js, gestion d'état (Redux/Context API) et API REST.",
+        'techs' => ['React.js', 'Redux', 'REST API', 'Tailwind'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M205+React+App'
+    ],
+    [
+        'id' => 'M206',
+        'code' => 'M206',
+        'title' => "Création d'une application mobile",
+        'category' => 'mobile',
+        'desc' => "Développement mobile multiplateforme avec React Native / Flutter, intégration des composants natifs et consommation d'APIs.",
+        'techs' => ['React Native', 'Flutter', 'Mobile UI', 'Expo'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M206+Mobile+Screen'
+    ],
+    [
+        'id' => 'M207',
+        'code' => 'M207',
+        'title' => "Sécurité d'un site web",
+        'category' => 'management',
+        'desc' => "Mise en œuvre des bonnes pratiques de cybersécurité, prévention OWASP (XSS, SQLi, CSRF), chiffrement et authentification JWT.",
+        'techs' => ['OWASP', 'JWT', 'HTTPS', 'Encryption'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M207+Security+Audit'
+    ],
+    [
+        'id' => 'M208',
+        'code' => 'M208',
+        'title' => "Cloud & DevOps",
+        'category' => 'mobile',
+        'desc' => "Conteneurisation d'applications avec Docker, hébergement cloud, intégration/déploiement continu (CI/CD) et administration serveur.",
+        'techs' => ['Docker', 'CI/CD', 'Git', 'Vercel/AWS'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M208+Docker+DevOps'
+    ],
+    [
+        'id' => 'M209',
+        'code' => 'M209',
+        'title' => "Projet de fin d'études (PFE)",
+        'category' => 'backend',
+        'desc' => "Projet de synthèse complet intégrant l'ensemble des compétences acquises durant la formation en Développement Digital.",
+        'techs' => ['Full-Stack', 'Laravel/React', 'PFE', 'UML'],
+        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M209+PFE+Dashboard'
+    ]
+];
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exquisite Dev | Portfolio</title>
+    <title>OFPPT ISTA 2nd Year Portfolio | <?php echo htmlspecialchars($studentName); ?></title>
+    <!-- FontAwesome for rich icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            /* Default: Emerald/Gold Theme */
+            /* Theme 1: Dark Emerald & Bronze Luxury */
             --bg-dark: #0a1a14; 
-            --primary-green: #2ecc71;
             --deep-green: #1b4d3e;
-            --luxury-brown: #a67c52; 
-            --soft-brown: #d4a373;
-            --text-light: #e0e0e0;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --gold-shadow: 0 15px 35px rgba(166, 124, 82, 0.2);
-            --font-code: 'Fira Code', monospace;
-            --grad: radial-gradient(circle at top right, #1b4d3e, #0a1a14);
+            --luxury-brown: #a67c52;
+            --luxury-brown-hover: #c49567;
+            --accent-green: #2ecc71;
+            --text-light: #f0f4f2;
+            --text-muted: #a0b3aa;
+            --glass-bg: rgba(27, 77, 62, 0.15);
+            --card-bg: rgba(13, 30, 24, 0.75);
+            --border-color: rgba(166, 124, 82, 0.25);
+            --shadow: 0 15px 35px rgba(0,0,0,0.6);
+            --font-code: 'Fira Code', 'Consolas', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        /* Purple Mode Override */
+        /* Theme 2: Royal Purple & Gold Mode */
         body.purple-mode {
             --bg-dark: #120a1a; 
             --deep-green: #2d1b4d;
-            --primary-green: #9b59b6;
-            --luxury-brown: #d4a373; /* Slightly brighter for contrast */
-            --grad: radial-gradient(circle at top right, #2d1b4d, #120a1a);
-            --gold-shadow: 0 15px 35px rgba(155, 89, 182, 0.2);
+            --luxury-brown: #d4a373; 
+            --luxury-brown-hover: #e8bd93;
+            --accent-green: #9b59b6;
+            --text-light: #f3edfc;
+            --text-muted: #bfa8d8;
+            --glass-bg: rgba(45, 27, 77, 0.2);
+            --card-bg: rgba(22, 13, 32, 0.8);
+            --border-color: rgba(212, 163, 115, 0.3);
+            --shadow: 0 15px 35px rgba(155, 89, 182, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark); 
             color: var(--text-light);
             margin: 0;
-            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background: var(--grad);
-            transition: background 0.8s ease, color 0.5s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
         }
 
-        /* Transition Helper */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            filter: blur(10px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-
-        /* --- Theme Switcher Button --- */
-        .theme-switch {
-            background: rgba(166, 124, 82, 0.1);
-            border: 1px solid var(--luxury-brown);
-            color: var(--luxury-brown);
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: var(--font-code);
-            font-size: 0.7rem;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-
-        .theme-switch:hover {
-            background: var(--luxury-brown);
-            color: white;
-            box-shadow: 0 0 15px var(--luxury-brown);
-        }
-
-        /* --- Gold Leaves --- */
-        .gold-leaf {
+        /* --- Floating Particles Background --- */
+        #float-container {
             position: fixed;
-            background: linear-gradient(135deg, var(--luxury-brown), #ffe4b5);
-            width: 12px; height: 12px;
-            opacity: 0.3; z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .gold-leaf {
+            position: absolute;
+            background: linear-gradient(135deg, var(--luxury-brown), #ffe4b5);
+            width: 8px;
+            height: 10px;
+            opacity: 0.3;
+            border-radius: 2px;
             animation: luxuryFloat linear infinite;
         }
 
         @keyframes luxuryFloat {
-            0% { transform: translateY(110vh) rotate(0deg) scale(1); opacity: 0; }
-            20% { opacity: 0.4; }
-            100% { transform: translateY(-10vh) rotate(720deg) scale(0.5); opacity: 0; }
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
         }
 
         header {
-            padding: 1.5rem 10%;
+            background: rgba(10, 26, 20, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(166, 124, 82, 0.2);
-            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            height: 75px;
+            transition: background 0.5s ease;
         }
 
-        .logo { 
-            font-family: var(--font-code); 
-            font-weight: 800; 
-            color: var(--luxury-brown); 
-            font-size: 1.5rem;
+        body.purple-mode header {
+            background: rgba(18, 10, 26, 0.85);
         }
 
-        .hero {
+        .logo {
+            font-family: var(--font-code);
+            font-weight: 800;
+            color: var(--luxury-brown);
+            letter-spacing: -0.5px;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 85vh;
-            padding: 0 10%;
-            gap: 60px;
+            gap: 8px;
+            text-decoration: none;
         }
 
-        .hero-info { flex: 1; }
-        .hero-info h1 { font-size: 4rem; margin: 0; line-height: 1.1; font-weight: 900; }
-        
-        .typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--luxury-brown);
-            width: 0;
-        }
-
-        .hero-info h1 span { 
+        .logo span.badge {
+            font-size: 0.65rem;
+            background: rgba(166, 124, 82, 0.15);
+            border: 1px solid var(--luxury-brown);
             color: var(--luxury-brown);
-            background: linear-gradient(to right, #d4a373, #a67c52);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            padding: 2px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
         }
 
-        .hero-info p { 
-            color: var(--text-light); opacity: 0.7; font-size: 1.2rem; margin: 25px 0;
-            border-left: 3px solid var(--luxury-brown); padding-left: 20px;
+        nav { display: flex; align-items: center; gap: 12px; }
+
+        nav a, .dropdown-btn {
+            text-decoration: none;
+            color: var(--text-light);
+            padding: 8px 14px;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .code-vault {
-            flex: 1;
-            background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.9));
-            padding: 40px; border-radius: 30px;
-            box-shadow: var(--gold-shadow);
-            border: 1px solid rgba(166, 124, 82, 0.3);
+        nav a:hover, .dropdown-btn:hover { 
+            color: var(--luxury-brown); 
+            background: rgba(255,255,255,0.03);
+        }
+
+        .theme-toggle-btn {
+            background: linear-gradient(135deg, var(--luxury-brown), #7d5a37);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .dropdown {
             position: relative;
         }
 
-        .grid-lux { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
-        .lux-card {
-            background: rgba(166, 124, 82, 0.05);
-            border: 1px solid rgba(166, 124, 82, 0.1);
-            padding: 25px; border-radius: 20px; text-align: center;
-            transition: all 0.4s ease;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 50px; 
+            right: 0;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            min-width: 280px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.3s ease;
+            max-height: 420px;
+            overflow-y: auto;
+            z-index: 1001;
+            padding: 6px 0;
         }
-        .lux-card:hover { transform: translateY(-5px); border-color: var(--luxury-brown); }
-        .lux-card strong { display: block; color: var(--luxury-brown); font-family: var(--font-code); }
 
-        .btn-gold {
-            display: inline-block; padding: 15px 40px;
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-content a {
+            padding: 10px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover { 
+            background: rgba(166, 124, 82, 0.15); 
+            color: var(--accent-green); 
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .hero {
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, var(--deep-green) 0%, var(--bg-dark) 75%);
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        .hero-badge {
+            background: rgba(166, 124, 82, 0.15);
+            border: 1px solid var(--luxury-brown);
+            color: var(--luxury-brown);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+        .hero h1 span { color: var(--luxury-brown); }
+        
+        .hero p { 
+            font-family: var(--font-code);
+            color: var(--accent-green); 
+            font-size: 1rem;
+            margin: 20px 0 35px; 
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-main {
             background: linear-gradient(135deg, var(--luxury-brown), #7d5a37);
-            color: #fff; text-decoration: none; border-radius: 50px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
         }
 
-        footer { text-align: center; padding: 50px; opacity: 0.5; font-family: var(--font-code); font-size: 0.8rem; }
-
-        @media (max-width: 968px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 50px;}
-            .hero-info h1 { font-size: 2.5rem; }
+        .btn-main:hover { 
+            transform: translateY(-3px) scale(1.02); 
+            filter: brightness(1.2); 
         }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--luxury-brown);
+        }
+
+        .modules-nav-wrapper {
+            position: sticky;
+            top: 75px;
+            z-index: 900;
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 5%;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+        }
+
+        .filter-tab {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-family: var(--font-code);
+        }
+
+        .filter-tab:hover, .filter-tab.active {
+            background: var(--luxury-brown);
+            color: white;
+            border-color: var(--luxury-brown);
+        }
+
+        .stats-counter {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-family: var(--font-code);
+        }
+
+        .modules-section {
+            padding: 40px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            margin: 0 0 10px;
+        }
+
+        .section-title p {
+            color: var(--luxury-brown);
+            font-family: var(--font-code);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--luxury-brown);
+            box-shadow: var(--shadow);
+        }
+
+        .module-header {
+            padding: 22px 25px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .module-code {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            background: rgba(46, 204, 113, 0.1);
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 8px;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .module-title {
+            font-size: 1.25rem;
+            margin: 0 0 10px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .module-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .module-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .tech-tag {
+            font-size: 0.7rem;
+            background: rgba(166, 124, 82, 0.12);
+            color: var(--luxury-brown);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: var(--font-code);
+        }
+
+        .exercise-upload-area {
+            padding: 20px 25px;
+            background: rgba(0,0,0,0.15);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .area-title {
+            font-size: 0.85rem;
+            font-family: var(--font-code);
+            color: var(--luxury-brown);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            background: rgba(255,255,255,0.01);
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--luxury-brown);
+            background: rgba(166, 124, 82, 0.08);
+        }
+
+        .drop-zone i {
+            font-size: 1.5rem;
+            color: var(--luxury-brown);
+            margin-bottom: 6px;
+        }
+
+        .drop-zone p {
+            margin: 0;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .drop-zone span {
+            color: var(--luxury-brown);
+            font-weight: 600;
+        }
+
+        .file-input-hidden { display: none; }
+
+        /* Thumbnails Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            background: #000;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .gallery-item-actions {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0;
+            transition: 0.2s opacity;
+        }
+
+        .gallery-item:hover .gallery-item-actions { opacity: 1; }
+
+        .action-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--luxury-brown);
+            transform: scale(1.1);
+        }
+
+        .action-btn.delete-btn:hover { background: #e74c3c; }
+
+        .no-exercises {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .module-footer {
+            padding: 15px 25px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-atelier {
+            color: var(--luxury-brown);
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-family: var(--font-code);
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-atelier:hover {
+            background: var(--luxury-brown);
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; 
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            align-items: center; justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--luxury-brown);
+            max-width: 520px; width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-footer {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-res {
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            transition: 0.3s;
+            font-family: var(--font-code);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .btn-ennonce { background: rgba(255,255,255,0.05); color: var(--text-light); }
+        .btn-rapport { background: var(--luxury-brown); color: white; }
+        .btn-github { background: var(--accent-green); color: #0a1a14; }
+
+        .btn-ennonce:hover { background: rgba(255,255,255,0.12); }
+        .btn-rapport:hover { filter: brightness(1.15); }
+        .btn-github:hover { filter: brightness(1.15); }
+
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 1px solid var(--luxury-brown);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            margin-top: 15px;
+            color: var(--text-light);
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px; right: 35px;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover { color: var(--luxury-brown); }
+
+        footer { 
+            text-align: center; 
+            padding: 50px 20px; 
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-dark);
+            font-family: var(--font-code); 
+            font-size: 0.75rem; 
+            color: var(--text-muted);
+        }
+
+        footer span { color: var(--luxury-brown); }
     </style>
 </head>
 <body>
 
-    <div id="particles"></div>
+    <div id="float-container"></div>
 
-    <header class="reveal">
-        <div class="logo">WADIE.PRO</div>
-        <div style="display: flex; gap: 15px; align-items: center;">
-            <button class="theme-switch" onclick="toggleTheme()">SWITCH_THEME.exe</button>
-            <div style="color: var(--luxury-brown); font-family: var(--font-code); font-size: 0.8rem;">STATUS: ELITE_DEV</div>
-        </div>
+    <header>
+        <a href="index.php" class="logo">
+            <i class="fa-solid fa-code"></i> <?php echo htmlspecialchars($studentName); ?>.DEV 
+            <span class="badge">OFPPT DD 2ND YEAR</span>
+        </a>
+        <nav>
+            <a href="#modules"><i class="fa-solid fa-cubes"></i> Modules</a>
+            
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown(event)">
+                    <i class="fa-solid fa-folder-open"></i> Repositories.exe ▼
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <?php foreach ($modules as $mod): ?>
+                        <a href="#" onclick="openAtelier('<?php echo $mod['code'] . ' - ' . addslashes($mod['title']); ?>', '<?php echo addslashes($mod['desc']); ?>', '#', '#', '#')">
+                            <span>> <?php echo $mod['code']; ?> <?php echo htmlspecialchars($mod['title']); ?></span> 
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <i class="fa-solid fa-circle-half-stroke"></i> <span id="themeText">ROYAL MODE</span>
+            </button>
+        </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-info">
-            <h1 class="reveal"><span class="typing" id="type1">Elegance</span> <br><span class="typing" id="type2" style="animation-delay: 1.2s;">In Every Line</span></h1>
-            <p class="reveal">Transforming complex logic into seamless digital experiences with a touch of prestige.</p>
-            <div class="reveal">
-                <a href="ateliers.php" class="btn-gold">Discover Excellence</a>
-            </div>
+        <div class="hero-badge">
+            <i class="fa-solid fa-graduation-cap"></i> OFPPT ISTA <?php echo $academicYear; ?> - <?php echo htmlspecialchars($specialization); ?>
         </div>
-
-        <div class="code-vault reveal">
-            <div style="font-family: var(--font-code); color: var(--text-light); opacity: 0.6; margin-bottom: 20px;">
-                // Master Class Definition<br>
-                <span style="color: var(--luxury-brown)">class</span> <span style="color: var(--primary-green)">PrestigePortfolio</span> {
-            </div>
-            
-            <div class="grid-lux">
-                <div class="lux-card"><strong>Architecture</strong><span style="font-size: 0.7rem; opacity: 0.5;">ROBUST SYSTEM</span></div>
-                <div class="lux-card"><strong>Intelligence</strong><span style="font-size: 0.7rem; opacity: 0.5;">CLEAN LOGIC</span></div>
-                <div class="lux-card"><strong>Refinement</strong><span style="font-size: 0.7rem; opacity: 0.5;">PIXEL PERFECT</span></div>
-                <div class="lux-card"><strong>Security</strong><span style="font-size: 0.7rem; opacity: 0.5;">ENCRYPTED</span></div>
-            </div>
-
-            <div style="font-family: var(--font-code); color: var(--text-light); opacity: 0.6; margin-top: 20px;">
-                } // End of Class
-            </div>
+        <h1 id="heroTitle">Digital <span>Prestige</span></h1>
+        <p>> system.init("2nd Year Digital Development Portfolio - Specialization Projects & Exercises Showcase");</p>
+        
+        <div class="hero-actions">
+            <a href="#modules" class="btn-main">
+                <i class="fa-solid fa-play"></i> Explore Modules
+            </a>
+            <a href="https://github.com/Wadiebogos1/Portfolio.git" target="_blank" class="btn-secondary">
+                <i class="fa-brands fa-github"></i> GitHub Profile
+            </a>
         </div>
     </section>
 
-    <footer class="reveal">DESIGNED & CODED FOR THE ELITE — 2026</footer>
+    <div class="modules-nav-wrapper">
+        <div class="filter-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterModules('all')">All Modules (<?php echo count($modules); ?>)</button>
+                <button class="filter-tab" onclick="filterModules('frontend')">Front-End</button>
+                <button class="filter-tab" onclick="filterModules('backend')">Backend & DB</button>
+                <button class="filter-tab" onclick="filterModules('mobile')">Mobile & Cloud</button>
+                <button class="filter-tab" onclick="filterModules('management')">Management & Security</button>
+            </div>
+            <div class="stats-counter" id="statsCounter">
+                <i class="fa-solid fa-images"></i> Total Exercises Preserved: <span id="totalExercisesCount" style="color:var(--luxury-brown); font-weight:bold;">0</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="modules-section" id="modules">
+        <div class="section-title">
+            <h2>OFPPT 2nd Year Modules Showcase</h2>
+            <p>// Track, upload and document your daily exercises & projects</p>
+        </div>
+
+        <div class="modules-grid" id="modulesContainer">
+            <?php foreach ($modules as $mod): ?>
+                <div class="module-card" data-category="<?php echo $mod['category']; ?>">
+                    <div class="module-header">
+                        <span class="module-code"><i class="fa-solid fa-bookmark"></i> <?php echo $mod['code']; ?></span>
+                        <h3 class="module-title"><?php echo htmlspecialchars($mod['title']); ?></h3>
+                        <p class="module-desc"><?php echo htmlspecialchars($mod['desc']); ?></p>
+                        <div class="module-tech-stack">
+                            <?php foreach ($mod['techs'] as $tech): ?>
+                                <span class="tech-tag"><?php echo htmlspecialchars($tech); ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <div class="exercise-upload-area">
+                        <div class="area-title">
+                            <span><i class="fa-solid fa-camera"></i> Exercises Screenshots</span>
+                            <span style="font-size: 0.75rem; color: var(--accent-green);" id="count_badge_<?php echo $mod['id']; ?>">0 file(s)</span>
+                        </div>
+
+                        <!-- Dropzone for File Upload -->
+                        <div class="drop-zone" onclick="triggerFileInput('<?php echo $mod['id']; ?>')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleFileDrop(event, '<?php echo $mod['id']; ?>')">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>Drag & Drop exercise photo or <span>Browse</span></p>
+                            <input type="file" id="file_input_<?php echo $mod['id']; ?>" class="file-input-hidden" accept="image/*" onchange="handleFileSelect(event, '<?php echo $mod['id']; ?>')">
+                        </div>
+
+                        <!-- Gallery Thumbnails container populated via LocalStorage -->
+                        <div class="gallery-grid" id="gallery_<?php echo $mod['id']; ?>">
+                            <!-- Dynamic Content -->
+                        </div>
+                    </div>
+
+                    <div class="module-footer">
+                        <button class="btn-atelier" onclick="openAtelier('<?php echo $mod['code'] . ' - ' . addslashes($mod['title']); ?>', '<?php echo addslashes($mod['desc']); ?>', '#', '#', '#')">
+                            <i class="fa-solid fa-folder"></i> View Details
+                        </button>
+                        <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-code);">OFPPT DD 2026</span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <!-- Modal details dialog -->
+    <div id="atelierModal" class="modal">
+        <div class="modal-box">
+            <h2 id="atTitle" style="color: var(--luxury-brown); font-family: var(--font-code); margin-top: 0;"></h2>
+            <p id="atDesc" style="color: var(--text-light); opacity: 0.8; font-size: 0.9rem; line-height: 1.6;"></p>
+            <div class="modal-footer">
+                <a href="#" id="linkEnnonce" class="btn-res btn-ennonce" target="_blank"><i class="fa-solid fa-file-lines"></i> Module Syllabus</a>
+                <a href="#" id="linkRapport" class="btn-res btn-rapport" target="_blank"><i class="fa-solid fa-book"></i> View Report / TP</a>
+                <a href="#" id="linkGithub" class="btn-res btn-github" target="_blank"><i class="fa-brands fa-github"></i> Source Repository</a>
+            </div>
+            <button onclick="closeAtelier()" style="margin-top:25px; border:none; background:none; cursor:pointer; color:var(--luxury-brown); font-family: var(--font-code); font-size: 0.8rem;">[ CLOSE_WINDOW ]</button>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Exercise Preview">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> // COMPILED BY <span><?php echo htmlspecialchars($studentName); ?></span> // OFPPT ISTA DIGITAL DEVELOPMENT PORTFOLIO</p>
+    </footer>
 
     <script>
-        // Toggle Theme Function
-        function toggleTheme() {
-            document.body.classList.toggle('purple-mode');
+        // Pass PHP modules definition into JS for initial LocalStorage seeding
+        const PHP_MODULES = <?php echo json_encode($modules); ?>;
+        const STORAGE_KEY = 'ofppt_portfolio_exercises_v1';
+
+        // Retrieve exercises stored locally
+        function getStoredExercises() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            if (data) {
+                try { return JSON.parse(data); } catch(e) { console.error(e); }
+            }
+            
+            // Initial seed using default placeholders if empty
+            const initialData = {};
+            PHP_MODULES.forEach(mod => {
+                initialData[mod.id] = [
+                    {
+                        id: mod.id + '_sample',
+                        url: mod.defaultImg,
+                        name: 'Exercise Screenshot Sample'
+                    }
+                ];
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
+            return initialData;
         }
 
-        // Particle Logic
-        const container = document.getElementById('particles');
+        function saveExercises(exercisesObj) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(exercisesObj));
+            updateAllGalleries();
+        }
+
+        function updateAllGalleries() {
+            const allData = getStoredExercises();
+            let totalCount = 0;
+
+            PHP_MODULES.forEach(mod => {
+                const items = allData[mod.id] || [];
+                totalCount += items.length;
+
+                const countBadge = document.getElementById(`count_badge_${mod.id}`);
+                if (countBadge) countBadge.innerText = `${items.length} file(s)`;
+
+                const galleryContainer = document.getElementById(`gallery_${mod.id}`);
+                if (galleryContainer) {
+                    if (items.length === 0) {
+                        galleryContainer.innerHTML = `<div class="no-exercises" style="grid-column: 1/-1;">No exercise screenshot added yet.</div>`;
+                    } else {
+                        galleryContainer.innerHTML = items.map(item => `
+                            <div class="gallery-item">
+                                <img src="${item.url}" alt="${item.name}">
+                                <div class="gallery-item-actions">
+                                    <button class="action-btn" title="Zoom" onclick="openLightbox('${item.url}', '${item.name.replace(/'/g, "\\'")}')"><i class="fa-solid fa-expand"></i></button>
+                                    <button class="action-btn delete-btn" title="Delete" onclick="deleteExercise('${mod.id}', '${item.id}')"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            });
+
+            const counterEl = document.getElementById('totalExercisesCount');
+            if (counterEl) counterEl.innerText = totalCount;
+        }
+
+        // File upload actions
+        function triggerFileInput(moduleId) {
+            document.getElementById(`file_input_${moduleId}`).click();
+        }
+
+        function handleFileSelect(event, moduleId) {
+            const files = event.target.files;
+            if (files && files[0]) {
+                processFile(files[0], moduleId);
+            }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('dragover');
+        }
+
+        function handleFileDrop(event, moduleId) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragover');
+            const files = event.dataTransfer.files;
+            if (files && files[0]) {
+                processFile(files[0], moduleId);
+            }
+        }
+
+        function processFile(file, moduleId) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload an image file (.png, .jpg, .webp).');
+                return;
+            }
+
+            if (file.size > 3 * 1024 * 1024) {
+                alert('File size exceeds 3MB limit for LocalStorage. Please select a smaller screenshot.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Url = e.target.result;
+                const newExercise = {
+                    id: 'ex_' + Date.now(),
+                    url: base64Url,
+                    name: file.name
+                };
+
+                const allData = getStoredExercises();
+                if (!allData[moduleId]) allData[moduleId] = [];
+                allData[moduleId].push(newExercise);
+
+                saveExercises(allData);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function deleteExercise(moduleId, exerciseId) {
+            if (!confirm('Are you sure you want to delete this exercise image?')) return;
+
+            const allData = getStoredExercises();
+            if (allData[moduleId]) {
+                allData[moduleId] = allData[moduleId].filter(item => item.id !== exerciseId);
+                saveExercises(allData);
+            }
+        }
+
+        // Filter cards by category
+        function filterModules(category) {
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const cards = document.querySelectorAll('.module-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox modal logic
+        function openLightbox(url, name) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaption');
+            img.src = url;
+            caption.innerText = name || 'Exercise Preview';
+            modal.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        // Theme and UI
+        function toggleTheme() {
+            const body = document.body;
+            const heroTitle = document.getElementById('heroTitle');
+            const themeText = document.getElementById('themeText');
+            
+            body.classList.toggle('purple-mode');
+
+            if (body.classList.contains('purple-mode')) {
+                heroTitle.innerHTML = 'Royal <span>Excellence</span>';
+                themeText.innerText = 'EMERALD MODE';
+            } else {
+                heroTitle.innerHTML = 'Digital <span>Prestige</span>';
+                themeText.innerText = 'ROYAL MODE';
+            }
+        }
+
         function createLeaf() {
+            const container = document.getElementById('float-container');
+            if (!container) return;
             const leaf = document.createElement('div');
             leaf.className = 'gold-leaf';
             leaf.style.left = Math.random() * 100 + 'vw';
             leaf.style.animationDuration = (Math.random() * 5 + 7) + 's';
-            leaf.style.width = (Math.random() * 10 + 5) + 'px';
-            leaf.style.height = leaf.style.width;
+            leaf.style.width = (Math.random() * 6 + 4) + 'px';
             container.appendChild(leaf);
-            setTimeout(() => leaf.remove(), 12000);
+            setTimeout(() => leaf.remove(), 10000);
         }
-        setInterval(createLeaf, 800);
+        setInterval(createLeaf, 750);
 
-        // Entrance Transition Logic
-        window.addEventListener('load', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('active');
-                    const typingElements = el.querySelectorAll('.typing');
-                    typingElements.forEach(span => {
-                        span.style.animation = "typing 1.5s steps(20, end) forwards, blink 0.8s infinite";
-                    });
-                }, index * 250);
-            });
-        });
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes typing { from { width: 0 } to { width: 100% } }
-            @keyframes blink { 50% { border-color: transparent } }
-        `;
-        document.head.appendChild(style);
+        function openAtelier(title, desc, ennonce, rapport, github) {
+            document.getElementById('atTitle').innerText = title;
+            document.getElementById('atDesc').innerText = desc;
+            document.getElementById('linkEnnonce').href = ennonce;
+            document.getElementById('linkRapport').href = rapport;
+            document.getElementById('linkGithub').href = github;
+            document.getElementById('atelierModal').style.display = 'flex';
+        }
+
+        function closeAtelier() {
+            document.getElementById('atelierModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.dropdown')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i].classList.contains('show')) dropdowns[i].classList.remove('show');
+                }
+            }
+            if (event.target.className === 'modal') closeAtelier();
+        }
+
+        // Initialize gallery previews on page load
+        window.onload = function() {
+            updateAllGalleries();
+        };
     </script>
 </body>
 </html>
