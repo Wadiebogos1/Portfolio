@@ -747,11 +747,17 @@ $modules = [
             <?php foreach ($modules as $module): ?>
                 <?php
                     $imageDirectory = __DIR__ . '/../public/images/ateliers/' . $module['code'];
-                    $imageFiles = glob($imageDirectory . '/*') ?: [];
-                    $imageFiles = array_values(array_filter($imageFiles, function ($file) {
-                        return in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp', 'gif'], true);
-                    }));
-                ?>
+                    $imageFiles = [];
+                    if (is_dir($imageDirectory)) {
+                        $imageIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($imageDirectory, FilesystemIterator::SKIP_DOTS));
+                        foreach ($imageIterator as $imageEntry) {
+                            if ($imageEntry->isFile() && in_array(strtolower($imageEntry->getExtension()), ['jpg', 'jpeg', 'png', 'webp', 'gif'], true)) {
+                                $imageFiles[] = $imageEntry->getPathname();
+                            }
+                        }
+                        sort($imageFiles, SORT_NATURAL | SORT_FLAG_CASE);
+                    }
+                    ?>
                 <article class="module-card">
                     <div class="module-header">
                         <span class="module-code"><i class="fa-solid fa-bookmark"></i> <?php echo htmlspecialchars($module['code']); ?></span>
@@ -767,7 +773,7 @@ $modules = [
                             <?php if ($imageFiles): ?>
                                 <div class="gallery-grid">
                                     <?php foreach ($imageFiles as $imageFile): ?>
-                                        <?php $imageUrl = '/images/ateliers/' . rawurlencode($module['code']) . '/' . rawurlencode(basename($imageFile)); ?>
+                                        <?php $relativeImagePath = str_replace(DIRECTORY_SEPARATOR, '/', substr($imageFile, strlen($imageDirectory) + 1)); $encodedImagePath = implode('/', array_map('rawurlencode', explode('/', $relativeImagePath))); $imageUrl = '/images/ateliers/' . rawurlencode($module['code']) . '/' . $encodedImagePath; ?>
                                         <a class="gallery-item" href="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">
                                             <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="Image pour <?php echo htmlspecialchars($module['code'] . ' ' . $module['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
                                         </a>
