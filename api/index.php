@@ -331,6 +331,11 @@ $modules = [
         }
 
         .atelier-gallery[hidden] { display: none; }
+        .atelier-groups { display: grid; gap: 18px; margin-top: 18px; }
+        .atelier-group { padding-top: 14px; border-top: 1px solid var(--border-color); }
+        .atelier-group-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .atelier-group-heading h4 { margin: 0; color: var(--text-light); font-size: 0.95rem; }
+        .atelier-group-heading span { color: var(--text-muted); font: 0.72rem var(--font-code); }
 
         .modules-section {
             padding: 40px 5% 80px;
@@ -747,16 +752,34 @@ $modules = [
             <?php foreach ($modules as $module): ?>
                 <?php
                     $imageDirectory = __DIR__ . '/../public/images/ateliers/' . $module['code'];
-                    $imageFiles = [];
+                    $atelierGroups = [];
+                    $looseImages = [];
+                    $imageExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
                     if (is_dir($imageDirectory)) {
-                        $imageIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($imageDirectory, FilesystemIterator::SKIP_DOTS));
-                        foreach ($imageIterator as $imageEntry) {
-                            if ($imageEntry->isFile() && in_array(strtolower($imageEntry->getExtension()), ['jpg', 'jpeg', 'png', 'webp', 'gif'], true)) {
-                                $imageFiles[] = $imageEntry->getPathname();
+                        foreach (new DirectoryIterator($imageDirectory) as $moduleEntry) {
+                            if ($moduleEntry->isDot()) continue;
+                            if ($moduleEntry->isDir()) {
+                                $groupImages = [];
+                                $groupIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($moduleEntry->getPathname(), FilesystemIterator::SKIP_DOTS));
+                                foreach ($groupIterator as $imageEntry) {
+                                    if ($imageEntry->isFile() && in_array(strtolower($imageEntry->getExtension()), $imageExtensions, true)) {
+                                        $groupImages[] = $imageEntry->getPathname();
+                                    }
+                                }
+                                sort($groupImages, SORT_NATURAL | SORT_FLAG_CASE);
+                                $atelierGroups[] = ['name' => $moduleEntry->getFilename(), 'images' => $groupImages];
+                            } elseif ($moduleEntry->isFile() && in_array(strtolower($moduleEntry->getExtension()), $imageExtensions, true)) {
+                                $looseImages[] = $moduleEntry->getPathname();
                             }
                         }
-                        sort($imageFiles, SORT_NATURAL | SORT_FLAG_CASE);
                     }
+                    if ($looseImages) {
+                        sort($looseImages, SORT_NATURAL | SORT_FLAG_CASE);
+                        $atelierGroups[] = ['name' => 'Atelier 1', 'images' => $looseImages];
+                    }
+                    usort($atelierGroups, function ($left, $right) {
+                        return strnatcasecmp($left['name'], $right['name']);
+                    });
                     ?>
                 <article class="module-card">
                     <div class="module-header">
@@ -767,20 +790,34 @@ $modules = [
                     </div>
                     <div class="exercise-upload-area">
                         <button type="button" class="btn-atelier" id="ateliers-button-<?php echo $module['code']; ?>" aria-expanded="false" aria-controls="ateliers-<?php echo $module['code']; ?>" onclick="toggleAteliers('<?php echo $module['code']; ?>')">
-                            <i class="fa-solid fa-folder-open"></i> Ateliers (<?php echo count($imageFiles); ?>)
+                            <i class="fa-solid fa-folder-open"></i> Ateliers (<?php echo count($atelierGroups); ?>)
                         </button>
                         <div class="atelier-gallery" id="ateliers-<?php echo $module['code']; ?>" hidden>
-                            <?php if ($imageFiles): ?>
-                                <div class="gallery-grid">
-                                    <?php foreach ($imageFiles as $imageFile): ?>
-                                        <?php $relativeImagePath = str_replace(DIRECTORY_SEPARATOR, '/', substr($imageFile, strlen($imageDirectory) + 1)); $encodedImagePath = implode('/', array_map('rawurlencode', explode('/', $relativeImagePath))); $imageUrl = '/images/ateliers/' . rawurlencode($module['code']) . '/' . $encodedImagePath; ?>
-                                        <a class="gallery-item" href="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">
-                                            <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="Image pour <?php echo htmlspecialchars($module['code'] . ' ' . $module['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
-                                        </a>
+                            <?php if ($atelierGroups): ?>
+                                <div class="atelier-groups">
+                                    <?php foreach ($atelierGroups as $atelierGroup): ?>
+                                        <section class="atelier-group">
+                                            <div class="atelier-group-heading">
+                                                <h4><i class="fa-solid fa-folder"></i> <?php echo htmlspecialchars(ucfirst($atelierGroup['name']), ENT_QUOTES, 'UTF-8'); ?></h4>
+                                                <span><?php echo count($atelierGroup['images']); ?> image(s)</span>
+                                            </div>
+                                            <?php if ($atelierGroup['images']): ?>
+                                                <div class="gallery-grid">
+                                                    <?php foreach ($atelierGroup['images'] as $imageFile): ?>
+                                                        <?php $relativeImagePath = str_replace(DIRECTORY_SEPARATOR, '/', substr($imageFile, strlen($imageDirectory) + 1)); $encodedImagePath = implode('/', array_map('rawurlencode', explode('/', $relativeImagePath))); $imageUrl = '/images/ateliers/' . rawurlencode($module['code']) . '/' . $encodedImagePath; ?>
+                                                        <a class="gallery-item" href="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">
+                                                            <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($module['code'] . ' ' . $atelierGroup['name'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                                                        </a>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php else: ?>
+                                                <p class="no-exercises">Aucune image dans cet atelier pour le moment.</p>
+                                            <?php endif; ?>
+                                        </section>
                                     <?php endforeach; ?>
                                 </div>
                             <?php else: ?>
-                                <p class="no-exercises">Pas encore d’images. Ajoutez-les dans <code>public/images/ateliers/<?php echo htmlspecialchars($module['code']); ?>/</code>, puis faites git add, commit et push.</p>
+                                <p class="no-exercises">Pas encore d’atelier. Créez un dossier, par exemple <code>public/images/ateliers/<?php echo htmlspecialchars($module['code']); ?>/Atelier 1/</code>, ajoutez-y les images, puis faites git add, commit et push.</p>
                             <?php endif; ?>
                         </div>
                     </div>
