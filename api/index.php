@@ -6,90 +6,18 @@ $studentName = "WADIE";
 $academicYear = "2025/2026";
 $specialization = "Développement Digital - Option Web / Full-Stack";
 
-// Definition of all official 2nd Year OFPPT Digital Development Modules
+// Atelier portfolio entries for 2nd Year OFPPT Digital Development
 $modules = [
-    [
-        'id' => 'M201',
-        'code' => 'M201',
-        'title' => "Préparation d'un projet web",
-        'category' => 'management',
-        'desc' => "Analyse des besoins, élaboration du cahier des charges, modélisation UML, wireframing et charte graphique.",
-        'techs' => ['UML', 'Figma', 'Agile', 'Cahier des charges'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M201+Wireframe+Spec'
-    ],
-    [
-        'id' => 'M202',
-        'code' => 'M202',
-        'title' => "Approche agile",
-        'category' => 'management',
-        'desc' => "Gestion de projet selon la méthodologie Scrum, planification des Sprints, backlog utilisateur et daily standups.",
-        'techs' => ['Scrum', 'Trello', 'Jira', 'Kanban'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M202+Scrum+Board'
-    ],
-    [
-        'id' => 'M203',
-        'code' => 'M203',
-        'title' => "Intégration web",
-        'category' => 'frontend',
-        'desc' => "Création d'interfaces web modernes, responsive design avec HTML5, CSS3, JavaScript ES6+ et frameworks CSS.",
-        'techs' => ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Tailwind'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M203+Integration+CSS'
-    ],
-    [
-        'id' => 'M204',
-        'code' => 'M204',
-        'title' => "Développement web dynamique",
-        'category' => 'backend',
-        'desc' => "Conception d'applications web serveur sécurisées avec PHP, Laravel, Node.js, Express, POO, architecture MVC et MySQL.",
-        'techs' => ['PHP', 'Laravel', 'Node.js', 'MySQL', 'PDO'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M204+Laravel+Backend'
-    ],
-    [
-        'id' => 'M205',
-        'code' => 'M205',
-        'title' => "Développement front-end",
-        'category' => 'frontend',
-        'desc' => "Création de Single Page Applications (SPA) dynamiques avec React.js / Vue.js, gestion d'état (Redux/Context API) et API REST.",
-        'techs' => ['React.js', 'Redux', 'REST API', 'Tailwind'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M205+React+App'
-    ],
-    [
-        'id' => 'M206',
-        'code' => 'M206',
-        'title' => "Création d'une application mobile",
-        'category' => 'mobile',
-        'desc' => "Développement mobile multiplateforme avec React Native / Flutter, intégration des composants natifs et consommation d'APIs.",
-        'techs' => ['React Native', 'Flutter', 'Mobile UI', 'Expo'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M206+Mobile+Screen'
-    ],
-    [
-        'id' => 'M207',
-        'code' => 'M207',
-        'title' => "Sécurité d'un site web",
-        'category' => 'management',
-        'desc' => "Mise en œuvre des bonnes pratiques de cybersécurité, prévention OWASP (XSS, SQLi, CSRF), chiffrement et authentification JWT.",
-        'techs' => ['OWASP', 'JWT', 'HTTPS', 'Encryption'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M207+Security+Audit'
-    ],
-    [
-        'id' => 'M208',
-        'code' => 'M208',
-        'title' => "Cloud & DevOps",
-        'category' => 'mobile',
-        'desc' => "Conteneurisation d'applications avec Docker, hébergement cloud, intégration/déploiement continu (CI/CD) et administration serveur.",
-        'techs' => ['Docker', 'CI/CD', 'Git', 'Vercel/AWS'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M208+Docker+DevOps'
-    ],
-    [
-        'id' => 'M209',
-        'code' => 'M209',
-        'title' => "Projet de fin d'études (PFE)",
-        'category' => 'backend',
-        'desc' => "Projet de synthèse complet intégrant l'ensemble des compétences acquises durant la formation en Développement Digital.",
-        'techs' => ['Full-Stack', 'Laravel/React', 'PFE', 'UML'],
-        'defaultImg' => 'https://placehold.co/600x400/1b4d3e/e0e0e0?text=M209+PFE+Dashboard'
-    ]
+    ['code' => 'M201', 'title' => 'Préparation d’un projet web', 'description' => 'Analyser le besoin et préparer les étapes de réalisation d’un projet web.', 'topic' => 'Cadrage web'],
+    ['code' => 'M202', 'title' => 'Approche agile', 'description' => 'Organiser le travail d’équipe et suivre un projet avec une approche agile.', 'topic' => 'Agile'],
+    ['code' => 'M203', 'title' => 'Gestion des données', 'description' => 'Concevoir et gérer les données d’une application.', 'topic' => 'Base de données'],
+    ['code' => 'M204', 'title' => 'Développement front-end', 'description' => 'Créer les interfaces et les interactions visibles d’une application web.', 'topic' => 'Front-end'],
+    ['code' => 'M205', 'title' => 'Développement back-end', 'description' => 'Développer la logique serveur et les fonctionnalités d’une application.', 'topic' => 'Back-end'],
+    ['code' => 'M206', 'title' => 'Création d’une application Cloud native', 'description' => 'Concevoir une application pensée pour les environnements cloud.', 'topic' => 'Cloud'],
+    ['code' => 'M207', 'title' => 'Projet de synthèse', 'description' => 'Mettre en pratique les compétences de la formation dans un projet complet.', 'topic' => 'Projet'],
+    ['code' => 'M208', 'title' => 'Intégration du milieu professionnel', 'description' => 'Préparer et réaliser l’intégration en milieu professionnel.', 'topic' => 'Stage'],
 ];
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -402,58 +330,7 @@ $modules = [
             color: var(--luxury-brown);
         }
 
-        .modules-nav-wrapper {
-            position: sticky;
-            top: 75px;
-            z-index: 900;
-            background: var(--bg-dark);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 5%;
-            backdrop-filter: blur(10px);
-        }
-
-        .filter-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-            scrollbar-width: thin;
-        }
-
-        .filter-tab {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: 0.3s;
-            font-family: var(--font-code);
-        }
-
-        .filter-tab:hover, .filter-tab.active {
-            background: var(--luxury-brown);
-            color: white;
-            border-color: var(--luxury-brown);
-        }
-
-        .stats-counter {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-family: var(--font-code);
-        }
+        .atelier-gallery[hidden] { display: none; }
 
         .modules-section {
             padding: 40px 5% 80px;
@@ -581,6 +458,9 @@ $modules = [
             padding: 16px;
             text-align: center;
             background: rgba(255,255,255,0.01);
+            color: var(--text-light);
+            font: inherit;
+            width: 100%;
             cursor: pointer;
             transition: 0.3s;
             margin-bottom: 15px;
@@ -834,21 +714,7 @@ $modules = [
         </a>
         <nav>
             <a href="#modules"><i class="fa-solid fa-cubes"></i> Modules</a>
-            
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleDropdown(event)">
-                    <i class="fa-solid fa-folder-open"></i> Repositories.exe ▼
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <?php foreach ($modules as $mod): ?>
-                        <a href="#" onclick="openAtelier('<?php echo $mod['code'] . ' - ' . addslashes($mod['title']); ?>', '<?php echo addslashes($mod['desc']); ?>', '#', '#', '#')">
-                            <span>> <?php echo $mod['code']; ?> <?php echo htmlspecialchars($mod['title']); ?></span> 
-                            <i class="fa-solid fa-file-pdf"></i>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
+            <a href="https://github.com/Wadiebogos1/Portfolio.git" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
             <button class="theme-toggle-btn" onclick="toggleTheme()">
                 <i class="fa-solid fa-circle-half-stroke"></i> <span id="themeText">ROYAL MODE</span>
             </button>
@@ -864,7 +730,7 @@ $modules = [
         
         <div class="hero-actions">
             <a href="#modules" class="btn-main">
-                <i class="fa-solid fa-play"></i> Explore Modules
+                <i class="fa-solid fa-play"></i> Explorer les modules
             </a>
             <a href="https://github.com/Wadiebogos1/Portfolio.git" target="_blank" class="btn-secondary">
                 <i class="fa-brands fa-github"></i> GitHub Profile
@@ -872,274 +738,66 @@ $modules = [
         </div>
     </section>
 
-    <div class="modules-nav-wrapper">
-        <div class="filter-container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" onclick="filterModules('all')">All Modules (<?php echo count($modules); ?>)</button>
-                <button class="filter-tab" onclick="filterModules('frontend')">Front-End</button>
-                <button class="filter-tab" onclick="filterModules('backend')">Backend & DB</button>
-                <button class="filter-tab" onclick="filterModules('mobile')">Mobile & Cloud</button>
-                <button class="filter-tab" onclick="filterModules('management')">Management & Security</button>
-            </div>
-            <div class="stats-counter" id="statsCounter">
-                <i class="fa-solid fa-images"></i> Total Exercises Preserved: <span id="totalExercisesCount" style="color:var(--luxury-brown); font-weight:bold;">0</span>
-            </div>
-        </div>
-    </div>
-
     <section class="modules-section" id="modules">
         <div class="section-title">
-            <h2>OFPPT 2nd Year Modules Showcase</h2>
-            <p>// Track, upload and document your daily exercises & projects</p>
+            <h2>Modules de Développement Digital</h2>
+            <p>// OFPPT · Option Web Full-Stack · 2e année</p>
         </div>
-
-        <div class="modules-grid" id="modulesContainer">
-            <?php foreach ($modules as $mod): ?>
-                <div class="module-card" data-category="<?php echo $mod['category']; ?>">
+        <div class="modules-grid">
+            <?php foreach ($modules as $module): ?>
+                <?php
+                    $imageDirectory = __DIR__ . '/../public/images/ateliers/' . $module['code'];
+                    $imageFiles = glob($imageDirectory . '/*') ?: [];
+                    $imageFiles = array_values(array_filter($imageFiles, function ($file) {
+                        return in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp', 'gif'], true);
+                    }));
+                ?>
+                <article class="module-card">
                     <div class="module-header">
-                        <span class="module-code"><i class="fa-solid fa-bookmark"></i> <?php echo $mod['code']; ?></span>
-                        <h3 class="module-title"><?php echo htmlspecialchars($mod['title']); ?></h3>
-                        <p class="module-desc"><?php echo htmlspecialchars($mod['desc']); ?></p>
-                        <div class="module-tech-stack">
-                            <?php foreach ($mod['techs'] as $tech): ?>
-                                <span class="tech-tag"><?php echo htmlspecialchars($tech); ?></span>
-                            <?php endforeach; ?>
-                        </div>
+                        <span class="module-code"><i class="fa-solid fa-bookmark"></i> <?php echo htmlspecialchars($module['code']); ?></span>
+                        <h3 class="module-title"><?php echo htmlspecialchars($module['title']); ?></h3>
+                        <p class="module-desc"><?php echo htmlspecialchars($module['description']); ?></p>
+                        <div class="module-tech-stack"><span class="tech-tag"><?php echo htmlspecialchars($module['topic']); ?></span><span class="tech-tag">OFPPT · 2e année</span></div>
                     </div>
-
                     <div class="exercise-upload-area">
-                        <div class="area-title">
-                            <span><i class="fa-solid fa-camera"></i> Exercises Screenshots</span>
-                            <span style="font-size: 0.75rem; color: var(--accent-green);" id="count_badge_<?php echo $mod['id']; ?>">0 file(s)</span>
-                        </div>
-
-                        <!-- Dropzone for File Upload -->
-                        <div class="drop-zone" onclick="triggerFileInput('<?php echo $mod['id']; ?>')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleFileDrop(event, '<?php echo $mod['id']; ?>')">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <p>Drag & Drop exercise photo or <span>Browse</span></p>
-                            <input type="file" id="file_input_<?php echo $mod['id']; ?>" class="file-input-hidden" accept="image/*" onchange="handleFileSelect(event, '<?php echo $mod['id']; ?>')">
-                        </div>
-
-                        <!-- Gallery Thumbnails container populated via LocalStorage -->
-                        <div class="gallery-grid" id="gallery_<?php echo $mod['id']; ?>">
-                            <!-- Dynamic Content -->
-                        </div>
-                    </div>
-
-                    <div class="module-footer">
-                        <button class="btn-atelier" onclick="openAtelier('<?php echo $mod['code'] . ' - ' . addslashes($mod['title']); ?>', '<?php echo addslashes($mod['desc']); ?>', '#', '#', '#')">
-                            <i class="fa-solid fa-folder"></i> View Details
+                        <button type="button" class="btn-atelier" id="ateliers-button-<?php echo $module['code']; ?>" aria-expanded="false" aria-controls="ateliers-<?php echo $module['code']; ?>" onclick="toggleAteliers('<?php echo $module['code']; ?>')">
+                            <i class="fa-solid fa-folder-open"></i> Ateliers (<?php echo count($imageFiles); ?>)
                         </button>
-                        <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-code);">OFPPT DD 2026</span>
+                        <div class="atelier-gallery" id="ateliers-<?php echo $module['code']; ?>" hidden>
+                            <?php if ($imageFiles): ?>
+                                <div class="gallery-grid">
+                                    <?php foreach ($imageFiles as $imageFile): ?>
+                                        <?php $imageUrl = '/images/ateliers/' . rawurlencode($module['code']) . '/' . rawurlencode(basename($imageFile)); ?>
+                                        <a class="gallery-item" href="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">
+                                            <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="Image pour <?php echo htmlspecialchars($module['code'] . ' ' . $module['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <p class="no-exercises">Pas encore d’images. Ajoutez-les dans <code>public/images/ateliers/<?php echo htmlspecialchars($module['code']); ?>/</code>, puis faites git add, commit et push.</p>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
+                </article>
             <?php endforeach; ?>
         </div>
     </section>
-
-    <!-- Modal details dialog -->
-    <div id="atelierModal" class="modal">
-        <div class="modal-box">
-            <h2 id="atTitle" style="color: var(--luxury-brown); font-family: var(--font-code); margin-top: 0;"></h2>
-            <p id="atDesc" style="color: var(--text-light); opacity: 0.8; font-size: 0.9rem; line-height: 1.6;"></p>
-            <div class="modal-footer">
-                <a href="#" id="linkEnnonce" class="btn-res btn-ennonce" target="_blank"><i class="fa-solid fa-file-lines"></i> Module Syllabus</a>
-                <a href="#" id="linkRapport" class="btn-res btn-rapport" target="_blank"><i class="fa-solid fa-book"></i> View Report / TP</a>
-                <a href="#" id="linkGithub" class="btn-res btn-github" target="_blank"><i class="fa-brands fa-github"></i> Source Repository</a>
-            </div>
-            <button onclick="closeAtelier()" style="margin-top:25px; border:none; background:none; cursor:pointer; color:var(--luxury-brown); font-family: var(--font-code); font-size: 0.8rem;">[ CLOSE_WINDOW ]</button>
-        </div>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="lightbox-modal">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img id="lightboxImg" class="lightbox-img" src="" alt="Exercise Preview">
-        <div id="lightboxCaption" class="lightbox-caption"></div>
-    </div>
-
     <footer>
         <p>&copy; <?php echo date('Y'); ?> // COMPILED BY <span><?php echo htmlspecialchars($studentName); ?></span> // OFPPT ISTA DIGITAL DEVELOPMENT PORTFOLIO</p>
     </footer>
 
     <script>
-        // Pass PHP modules definition into JS for initial LocalStorage seeding
-        const PHP_MODULES = <?php echo json_encode($modules); ?>;
-        const STORAGE_KEY = 'ofppt_portfolio_exercises_v1';
-
-        // Retrieve exercises stored locally
-        function getStoredExercises() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            if (data) {
-                try { return JSON.parse(data); } catch(e) { console.error(e); }
-            }
-            
-            // Initial seed using default placeholders if empty
-            const initialData = {};
-            PHP_MODULES.forEach(mod => {
-                initialData[mod.id] = [
-                    {
-                        id: mod.id + '_sample',
-                        url: mod.defaultImg,
-                        name: 'Exercise Screenshot Sample'
-                    }
-                ];
-            });
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
-            return initialData;
+        function toggleAteliers(moduleCode) {
+            const gallery = document.getElementById('ateliers-' + moduleCode);
+            const button = document.getElementById('ateliers-button-' + moduleCode);
+            gallery.hidden = !gallery.hidden;
+            button.setAttribute('aria-expanded', String(!gallery.hidden));
         }
-
-        function saveExercises(exercisesObj) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(exercisesObj));
-            updateAllGalleries();
-        }
-
-        function updateAllGalleries() {
-            const allData = getStoredExercises();
-            let totalCount = 0;
-
-            PHP_MODULES.forEach(mod => {
-                const items = allData[mod.id] || [];
-                totalCount += items.length;
-
-                const countBadge = document.getElementById(`count_badge_${mod.id}`);
-                if (countBadge) countBadge.innerText = `${items.length} file(s)`;
-
-                const galleryContainer = document.getElementById(`gallery_${mod.id}`);
-                if (galleryContainer) {
-                    if (items.length === 0) {
-                        galleryContainer.innerHTML = `<div class="no-exercises" style="grid-column: 1/-1;">No exercise screenshot added yet.</div>`;
-                    } else {
-                        galleryContainer.innerHTML = items.map(item => `
-                            <div class="gallery-item">
-                                <img src="${item.url}" alt="${item.name}">
-                                <div class="gallery-item-actions">
-                                    <button class="action-btn" title="Zoom" onclick="openLightbox('${item.url}', '${item.name.replace(/'/g, "\\'")}')"><i class="fa-solid fa-expand"></i></button>
-                                    <button class="action-btn delete-btn" title="Delete" onclick="deleteExercise('${mod.id}', '${item.id}')"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div>
-                        `).join('');
-                    }
-                }
-            });
-
-            const counterEl = document.getElementById('totalExercisesCount');
-            if (counterEl) counterEl.innerText = totalCount;
-        }
-
-        // File upload actions
-        function triggerFileInput(moduleId) {
-            document.getElementById(`file_input_${moduleId}`).click();
-        }
-
-        function handleFileSelect(event, moduleId) {
-            const files = event.target.files;
-            if (files && files[0]) {
-                processFile(files[0], moduleId);
-            }
-        }
-
-        function handleDragOver(event) {
-            event.preventDefault();
-            event.currentTarget.classList.add('dragover');
-        }
-
-        function handleDragLeave(event) {
-            event.currentTarget.classList.remove('dragover');
-        }
-
-        function handleFileDrop(event, moduleId) {
-            event.preventDefault();
-            event.currentTarget.classList.remove('dragover');
-            const files = event.dataTransfer.files;
-            if (files && files[0]) {
-                processFile(files[0], moduleId);
-            }
-        }
-
-        function processFile(file, moduleId) {
-            if (!file.type.startsWith('image/')) {
-                alert('Please upload an image file (.png, .jpg, .webp).');
-                return;
-            }
-
-            if (file.size > 3 * 1024 * 1024) {
-                alert('File size exceeds 3MB limit for LocalStorage. Please select a smaller screenshot.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Url = e.target.result;
-                const newExercise = {
-                    id: 'ex_' + Date.now(),
-                    url: base64Url,
-                    name: file.name
-                };
-
-                const allData = getStoredExercises();
-                if (!allData[moduleId]) allData[moduleId] = [];
-                allData[moduleId].push(newExercise);
-
-                saveExercises(allData);
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function deleteExercise(moduleId, exerciseId) {
-            if (!confirm('Are you sure you want to delete this exercise image?')) return;
-
-            const allData = getStoredExercises();
-            if (allData[moduleId]) {
-                allData[moduleId] = allData[moduleId].filter(item => item.id !== exerciseId);
-                saveExercises(allData);
-            }
-        }
-
-        // Filter cards by category
-        function filterModules(category) {
-            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-
-            const cards = document.querySelectorAll('.module-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Lightbox modal logic
-        function openLightbox(url, name) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImg');
-            const caption = document.getElementById('lightboxCaption');
-            img.src = url;
-            caption.innerText = name || 'Exercise Preview';
-            modal.style.display = 'flex';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightboxModal').style.display = 'none';
-        }
-
-        // Theme and UI
         function toggleTheme() {
-            const body = document.body;
-            const heroTitle = document.getElementById('heroTitle');
-            const themeText = document.getElementById('themeText');
-            
-            body.classList.toggle('purple-mode');
-
-            if (body.classList.contains('purple-mode')) {
-                heroTitle.innerHTML = 'Royal <span>Excellence</span>';
-                themeText.innerText = 'EMERALD MODE';
-            } else {
-                heroTitle.innerHTML = 'Digital <span>Prestige</span>';
-                themeText.innerText = 'ROYAL MODE';
-            }
+            document.body.classList.toggle('purple-mode');
+            const purple = document.body.classList.contains('purple-mode');
+            document.getElementById('heroTitle').innerHTML = purple ? 'Royal <span>Excellence</span>' : 'Digital <span>Prestige</span>';
+            document.getElementById('themeText').textContent = purple ? 'EMERALD MODE' : 'ROYAL MODE';
         }
 
         function createLeaf() {
@@ -1154,39 +812,6 @@ $modules = [
             setTimeout(() => leaf.remove(), 10000);
         }
         setInterval(createLeaf, 750);
-
-        function toggleDropdown(e) {
-            e.stopPropagation();
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        function openAtelier(title, desc, ennonce, rapport, github) {
-            document.getElementById('atTitle').innerText = title;
-            document.getElementById('atDesc').innerText = desc;
-            document.getElementById('linkEnnonce').href = ennonce;
-            document.getElementById('linkRapport').href = rapport;
-            document.getElementById('linkGithub').href = github;
-            document.getElementById('atelierModal').style.display = 'flex';
-        }
-
-        function closeAtelier() {
-            document.getElementById('atelierModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (!event.target.closest('.dropdown')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    if (dropdowns[i].classList.contains('show')) dropdowns[i].classList.remove('show');
-                }
-            }
-            if (event.target.className === 'modal') closeAtelier();
-        }
-
-        // Initialize gallery previews on page load
-        window.onload = function() {
-            updateAllGalleries();
-        };
     </script>
 </body>
 </html>
